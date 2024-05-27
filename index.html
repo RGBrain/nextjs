@@ -1,5 +1,5 @@
 <html>
-  <body>
+  <body style="background-color:gray;"></body>
     <div id="app"></div>
 
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -8,14 +8,24 @@
     <script type="text/jsx">
       const app = document.getElementById("app");
 
-      function Header() {
-        return (<h1>Here's React text</h1>)
+      function Header({ title }) {
+        return <h1>{title ? title : 'Default Title'}</h1>;
       }
 
       function HomePage() {
-        return (<div>
-            <Header />
-        </div>)
+        const names = ['Georgia', 'Jacob', 'Sienna'];
+        return (
+          <div>
+            <Header title="Text passed in as props" />
+            <Header title="Same component reused with different props" />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+
+            </ul>
+        </div>
+        )
       }
 
       const root = ReactDOM.createRoot(app);
