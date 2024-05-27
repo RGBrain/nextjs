@@ -13,7 +13,16 @@
       }
 
       function HomePage() {
+
+        const [likes, setLikes] = React.useState(0);
+
         const names = ['Georgia', 'Jacob', 'Sienna'];
+        
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+
         return (
           <div>
             <Header title="Text passed in as props" />
@@ -22,8 +31,8 @@
               {names.map((name) => (
                 <li key={name}>{name}</li>
               ))}
-
             </ul>
+            <button onClick={handleClick}>Like ({likes})</button>
         </div>
         )
       }
